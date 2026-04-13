@@ -13,7 +13,9 @@ const observer = new IntersectionObserver(
 );
 
 document
-  .querySelectorAll(".hero-copy, .hero-panel, .section-heading, .about-grid article, .capability-grid article, .timeline article, .quote, .footer")
+  .querySelectorAll(
+    ".hero-copy, .hero-stage, .section-heading, .system-grid > *, .capability-grid article, .proof-grid article, .workflow-shell, .workflow-list article, .quote, .footer"
+  )
   .forEach((element) => {
     element.classList.add("reveal");
     observer.observe(element);
