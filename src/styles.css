@@ -3,8 +3,6 @@
   --bg: #07111f;
   --bg-2: #0c1728;
   --surface: rgba(11, 23, 40, 0.72);
-  --surface-strong: rgba(18, 33, 56, 0.94);
-  --surface-soft: rgba(126, 161, 255, 0.08);
   --ink: #ecf4ff;
   --muted: #95a7c2;
   --line: rgba(159, 190, 255, 0.14);
@@ -16,10 +14,6 @@
 
 * {
   box-sizing: border-box;
-}
-
-[v-cloak] {
-  display: none;
 }
 
 html {
@@ -83,8 +77,15 @@ a {
   color: var(--muted);
 }
 
-.announcement-bar p {
+.announcement-bar p,
+.trust-stats p,
+.playbook-card p,
+.faq-grid p,
+.footer-note,
+.use-case-card p {
   margin: 0;
+  color: var(--muted);
+  line-height: 1.75;
 }
 
 .announcement-bar a {
@@ -188,12 +189,12 @@ a {
   font-size: 0.95rem;
 }
 
-.nav-cta {
-  min-width: 0;
-}
-
 .nav a:hover {
   color: var(--ink);
+}
+
+.nav-cta {
+  min-width: 0;
 }
 
 .hero {
@@ -290,18 +291,15 @@ a {
   box-shadow: 0 16px 38px rgba(124, 242, 201, 0.22);
 }
 
-.button.secondary {
+.button.secondary,
+.button.ghost {
   color: var(--ink);
   background: rgba(255, 255, 255, 0.04);
   border-color: var(--line);
 }
 
 .button.ghost {
-  min-width: 0;
   padding: 12px 16px;
-  color: var(--ink);
-  background: rgba(255, 255, 255, 0.04);
-  border-color: var(--line);
 }
 
 .hero-stage {
@@ -332,8 +330,7 @@ a {
   width: min(100%, 520px);
   border-radius: 36px;
   padding: 22px;
-  background:
-    linear-gradient(180deg, rgba(17, 31, 52, 0.95) 0%, rgba(9, 20, 36, 0.95) 100%);
+  background: linear-gradient(180deg, rgba(17, 31, 52, 0.95) 0%, rgba(9, 20, 36, 0.95) 100%);
 }
 
 .panel-topline {
@@ -346,7 +343,8 @@ a {
   text-transform: uppercase;
 }
 
-.hero-terminal {
+.hero-terminal,
+.playbook-code {
   margin-top: 16px;
   padding: 18px;
   border-radius: 22px;
@@ -354,17 +352,17 @@ a {
   border: 1px solid rgba(124, 242, 201, 0.14);
 }
 
-.terminal-line {
+.terminal-line,
+.playbook-code div {
   display: flex;
-  align-items: center;
+  gap: 12px;
   justify-content: space-between;
-  gap: 14px;
-  font-size: 0.94rem;
-  color: #c9d7ea;
+  color: #dbe8fa;
 }
 
-.terminal-line + .terminal-line {
-  margin-top: 10px;
+.terminal-line + .terminal-line,
+.playbook-code div + div {
+  margin-top: 12px;
 }
 
 .token.prompt {
@@ -377,10 +375,18 @@ a {
   color: var(--accent-3);
 }
 
-.hero-board {
+.hero-board,
+.system-grid,
+.capability-grid,
+.proof-grid,
+.use-case-grid,
+.faq-grid {
   display: grid;
+  gap: 18px;
+}
+
+.hero-board {
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
   margin-top: 16px;
 }
 
@@ -419,8 +425,7 @@ a {
 
 .board-card.spotlight {
   grid-column: span 2;
-  background:
-    radial-gradient(circle at top right, rgba(124, 242, 201, 0.12), transparent 28%),
+  background: radial-gradient(circle at top right, rgba(124, 242, 201, 0.12), transparent 28%),
     linear-gradient(180deg, rgba(125, 166, 255, 0.14), rgba(255, 255, 255, 0.03));
 }
 
@@ -447,43 +452,12 @@ a {
   animation: pulse 2.2s ease-in-out infinite;
 }
 
-.pulse-bars i:nth-child(1) {
-  height: 22px;
-}
-
-.pulse-bars i:nth-child(2) {
-  height: 58px;
-  animation-delay: 0.2s;
-}
-
-.pulse-bars i:nth-child(3) {
-  height: 34px;
-  animation-delay: 0.4s;
-}
-
-.pulse-bars i:nth-child(4) {
-  height: 62px;
-  animation-delay: 0.6s;
-}
-
-.pulse-bars i:nth-child(5) {
-  height: 42px;
-  animation-delay: 0.8s;
-}
-
-.pulse-bars i:nth-child(6) {
-  height: 28px;
-  animation-delay: 1s;
-}
-
-.system-grid,
-.capability-grid,
-.proof-grid,
-.use-case-grid,
-.faq-grid {
-  display: grid;
-  gap: 18px;
-}
+.pulse-bars i:nth-child(1) { height: 22px; }
+.pulse-bars i:nth-child(2) { height: 58px; animation-delay: 0.2s; }
+.pulse-bars i:nth-child(3) { height: 34px; animation-delay: 0.4s; }
+.pulse-bars i:nth-child(4) { height: 62px; animation-delay: 0.6s; }
+.pulse-bars i:nth-child(5) { height: 42px; animation-delay: 0.8s; }
+.pulse-bars i:nth-child(6) { height: 28px; animation-delay: 1s; }
 
 .trust-strip {
   display: grid;
@@ -536,15 +510,6 @@ a {
   font-size: 1rem;
 }
 
-.trust-stats p,
-.playbook-card p,
-.faq-grid p,
-.footer-note {
-  margin: 0;
-  color: var(--muted);
-  line-height: 1.75;
-}
-
 .system-grid {
   grid-template-columns: 1.2fr 0.8fr 0.8fr;
 }
@@ -556,18 +521,11 @@ a {
 .proof-grid article,
 .workflow-shell,
 .quote,
-.footer {
+.footer,
+.use-case-card,
+.playbook-card {
   border-radius: 30px;
-  padding: 26px;
-}
-
-.system-intro h3,
-.capability-grid h3,
-.proof-grid h3,
-.workflow-list h3 {
-  display: block;
-  margin-bottom: 8px;
-  font-size: 1.1rem;
+  padding: 24px 26px;
 }
 
 .section {
@@ -586,10 +544,6 @@ a {
 .section-heading h2,
 .footer h2 {
   font-size: clamp(2.5rem, 4.6vw, 4.4rem);
-}
-
-.capability-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .system-list {
@@ -624,15 +578,14 @@ a {
   text-transform: uppercase;
 }
 
-.capability-grid article {
-  min-height: 220px;
-  background:
-    radial-gradient(circle at top right, rgba(124, 242, 201, 0.08), transparent 26%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.02));
+.capability-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.proof-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+.capability-grid article {
+  min-height: 220px;
+  background: radial-gradient(circle at top right, rgba(124, 242, 201, 0.08), transparent 26%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.02));
 }
 
 .use-case-grid {
@@ -640,60 +593,25 @@ a {
   align-items: stretch;
 }
 
-.use-case-card,
-.playbook-card {
-  border-radius: 30px;
-  padding: 24px;
-}
-
 .use-case-card {
   min-height: 220px;
-  background:
-    radial-gradient(circle at top right, rgba(125, 166, 255, 0.12), transparent 28%),
+  background: radial-gradient(circle at top right, rgba(125, 166, 255, 0.12), transparent 28%),
     linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.02));
 }
 
 .use-case-card.featured {
   grid-column: span 2;
-  background:
-    radial-gradient(circle at top right, rgba(124, 242, 201, 0.13), transparent 28%),
+  background: radial-gradient(circle at top right, rgba(124, 242, 201, 0.13), transparent 28%),
     linear-gradient(180deg, rgba(125, 166, 255, 0.1), rgba(255, 255, 255, 0.03));
-}
-
-.use-case-card h3,
-.playbook-card h3,
-.faq-grid summary {
-  margin: 0 0 10px;
-}
-
-.use-case-card p {
-  margin: 0;
-  color: var(--muted);
-  line-height: 1.8;
 }
 
 .playbook-card {
   grid-column: span 3;
-  background:
-    linear-gradient(180deg, rgba(17, 31, 52, 0.95) 0%, rgba(9, 20, 36, 0.95) 100%);
+  background: linear-gradient(180deg, rgba(17, 31, 52, 0.95) 0%, rgba(9, 20, 36, 0.95) 100%);
 }
 
-.playbook-code {
-  margin: 16px 0 14px;
-  padding: 18px;
-  border-radius: 22px;
-  background: rgba(2, 8, 15, 0.62);
-  border: 1px solid rgba(124, 242, 201, 0.14);
-}
-
-.playbook-code div {
-  display: flex;
-  gap: 12px;
-  color: #dbe8fa;
-}
-
-.playbook-code div + div {
-  margin-top: 12px;
+.proof-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .proof-grid article strong {
@@ -741,20 +659,6 @@ a {
   font-weight: 800;
 }
 
-.quote {
-  margin: 16px 0 28px;
-  text-align: center;
-  background:
-    radial-gradient(circle at top center, rgba(124, 242, 201, 0.09), transparent 24%),
-    var(--surface);
-}
-
-.quote p {
-  margin: 0;
-  font-size: clamp(1.4rem, 2.4vw, 2.15rem);
-  line-height: 1.7;
-}
-
 .faq-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
@@ -768,6 +672,7 @@ a {
   cursor: pointer;
   list-style: none;
   font-weight: 700;
+  margin: 0 0 10px;
 }
 
 .faq-grid summary::-webkit-details-marker {
@@ -780,14 +685,24 @@ a {
   margin-top: 14px;
 }
 
+.quote {
+  margin: 16px 0 28px;
+  text-align: center;
+  background: radial-gradient(circle at top center, rgba(124, 242, 201, 0.09), transparent 24%), var(--surface);
+}
+
+.quote p {
+  margin: 0;
+  font-size: clamp(1.4rem, 2.4vw, 2.15rem);
+  line-height: 1.7;
+}
+
 .footer {
   display: flex;
   align-items: end;
   justify-content: space-between;
   gap: 20px;
-  background:
-    radial-gradient(circle at top left, rgba(255, 211, 122, 0.09), transparent 22%),
-    var(--surface);
+  background: radial-gradient(circle at top left, rgba(255, 211, 122, 0.09), transparent 22%), var(--surface);
 }
 
 .footer-actions {
@@ -846,17 +761,11 @@ a {
   }
 
   .topbar {
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr auto;
     align-items: center;
     gap: 12px;
   }
-
-  .nav {
-    display: grid;
-    grid-template-columns: 1fr auto;
-  }
-
-  .hero {
 
   .menu-toggle {
     display: inline-flex;
@@ -873,15 +782,15 @@ a {
     display: grid;
     gap: 14px;
   }
-    min-height: auto;
-  }
+
+  .nav {
     flex-direction: column;
     gap: 10px;
     padding: 14px;
     border: 1px solid var(--line);
     border-radius: 18px;
     background: rgba(255, 255, 255, 0.03);
-    grid-column: span 1;
+  }
 
   .nav a {
     display: block;
@@ -891,8 +800,16 @@ a {
   .nav-cta {
     width: 100%;
   }
+
+  .hero {
+    min-height: auto;
   }
 
+  .hero-stage {
+    min-height: auto;
+  }
+
+  .board-card.spotlight,
   .use-case-card.featured,
   .playbook-card {
     grid-column: span 1;
@@ -941,7 +858,9 @@ a {
   .workflow-shell,
   .workflow-list article,
   .quote,
-  .footer {
+  .footer,
+  .use-case-card,
+  .playbook-card {
     border-radius: 22px;
   }
 

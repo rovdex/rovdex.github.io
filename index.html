@@ -14,37 +14,10 @@
       href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="icon" href="/favicon.ico" />
   </head>
   <body>
-    <div id="app" v-cloak>
-      <div class="page-shell" id="top">
-        <announcement-bar :announcement="content.announcement"></announcement-bar>
-
-        <site-header
-          :nav-links="content.navLinks"
-          :is-menu-open="isMenuOpen"
-          @toggle-menu="toggleMenu"
-          @close-menu="closeMenu"
-        ></site-header>
-
-        <main>
-          <hero-section :hero="content.hero" :hero-panel="content.heroPanel"></hero-section>
-          <trust-strip-section :trust="content.trust"></trust-strip-section>
-          <system-section :system="content.system"></system-section>
-          <capabilities-section :capabilities="content.capabilities"></capabilities-section>
-          <use-cases-section :use-cases="content.useCases" :playbook="content.playbook"></use-cases-section>
-          <proof-section :proof="content.proof"></proof-section>
-          <workflow-section :workflow="content.workflow"></workflow-section>
-          <faq-section :faq="content.faq"></faq-section>
-          <quote-section :quote="content.quote"></quote-section>
-        </main>
-
-        <site-footer :footer="content.footer"></site-footer>
-      </div>
-    </div>
-
-    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
-    <script src="./script.js"></script>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
   </body>
 </html>
